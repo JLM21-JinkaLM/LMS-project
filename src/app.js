@@ -13,6 +13,6 @@ app.use(express.json())
 app.use("/api/products",productRoutes)
 app.use("/api/orders",orderRoutes)
 app.use("/api/users",userRoutes)
-app.use("api/auth", authRoutes)
+app.use("/api/auth", authRoutes)
 
 module.exports = app;
