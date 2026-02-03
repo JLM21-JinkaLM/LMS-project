@@ -29,16 +29,17 @@ const userSchema = new mongoose.Schema({
 
 },{timestamps:true,_id:false})
 
-//encrypt password before saving
+// encrypt password before saving
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")){
         return next();
     }
 
-    const salt = await bcrypt.genSalt(10)
+    const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password,salt);
-    next();
+    // next();
 })
+
 
 //to decrypt password for comparison
 userSchema.methods.comparePassword = async function(enteredPassword){

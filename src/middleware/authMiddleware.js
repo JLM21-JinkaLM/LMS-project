@@ -15,8 +15,8 @@ exports.protect = async(req,res)=>{
     }
 
     try{
-        const verfiedToken = jwt.verify(token,process.env.JWT_SECRET);
-        req.user = await User.findById(verifiedToken.id).select("password")
+        const verifiedToken = jwt.verify(token,process.env.JWT_SECRET);
+        req.user = await User.findById(verifiedToken.id).select("-password")
         next();
     }
     catch(error){
